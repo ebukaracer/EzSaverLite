@@ -19,8 +19,7 @@
 - If you're using assembly definition in your project, be sure to add this package's reference under: `Assembly Definition References` or check out [this](https://github.com/ebukaracer/EzUnityUtils/blob/main/SETUPGUIDE.md)
 
 ## Quick Usage
-
-> #### Saving Data:
+#### Saving Data:
 ```csharp
 SaverManager.Saver.SaveInt("highscore", 100);
 SaverManager.Saver.SaveFloat("volume", 0.75f);
@@ -28,7 +27,7 @@ SaverManager.Saver.SaveString("playerName", "Racer");
 SaverManager.Saver.SaveBool("isMusicOn", true);
 ```
 
-> #### Loading Data:
+#### Loading Data:
 ``` csharp
 // With default values set to the second argument
 int highscore = SaverManager.Saver.GetInt("highscore", 0);
@@ -37,12 +36,12 @@ string playerName = SaverManager.Saver.GetString("playerName", "Guest");
 bool isMusicOn = SaverManager.Saver.GetBool("isMusicOn", false);
 ```
 
-> #### Checking for existence of Data:
+#### Checking for existence of Data:
 ``` csharp
 bool hasHighscore = SaverManager.Saver.Contains("highscore");
 ```
 
-> #### Clearing Data:
+#### Clearing Data:
 ``` csharp
 SaverManager.Saver.Clear("highscore");
 SaverManager.Saver.ClearAll();
