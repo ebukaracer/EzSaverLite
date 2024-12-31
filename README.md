@@ -16,6 +16,7 @@
 - Hit `(+)`, choose `Add package from Git URL`(Unity 2019.4+)
 - Paste the `URL` for this package inside the box: https://github.com/ebukaracer/EzSaverLite.git#upm
 - Hit `Add`
+- If you're using assembly definition in your project, be sure to add this package's reference under: `Assembly Definition References` or check out [this](https://github.com/ebukaracer/EzUnityUtils/blob/main/SETUPGUIDE.md)
 
 ## Quick Usage
 
