@@ -14,7 +14,7 @@
 ## Installation
  *In unity editor inside package manager:*
 - Hit `(+)`, choose `Add package from Git URL`(Unity 2019.4+)
-- Paste the `URL` for this package inside the box: https://github.com/ebukaracer/EzSaverLite.git#src
+- Paste the `URL` for this package inside the box: https://github.com/ebukaracer/EzSaverLite.git#upm
 - Hit `Add`
 
 ## Quick Usage
@@ -48,7 +48,7 @@ SaverManager.Saver.ClearAll();
 ```
 
 ## How it works
- **EzSaverLite** by default, uses `playerprefs` inside the unity editor during development and post-deployment to other platforms except for WebGL, which in this case relies on the browser's `local storage` for saving and loading data. When multiple builds of the same project are made, data is also persisted along.
+ **EzSaverLite** by default, uses `playerprefs` inside the unity editor during development and post-deployment to other platforms except for WebGL, which in this case relies on the browser's `local storage` for saving and loading data. When multiple builds of the same project(name) are made, data is also persisted along.
 
 ## Samples and Best Practices
 Check out this package's sample scene by importing it from the package manager *sample's tab* and exploring the script for the recommended approach for saving and loading data easily.
