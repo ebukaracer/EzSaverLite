@@ -1,5 +1,5 @@
 # EzSaverLite
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-blue)](http://makeapullrequest.com) [![License: MIT](https://img.shields.io/badge/License-MIT-blue)](https://github.com/ebukaracer/ebukaracer/blob/ebukaracer-resources/LICENSE.md)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-blue)](http://makeapullrequest.com) [![License: MIT](https://img.shields.io/badge/License-MIT-blue)](https://ebukaracer.github.io/ebukaracer/md/LICENSE.html)
 
 **EzSaverLite** is a Unity package that provides a flexible way to save and load game data. It supports multiple storage backends, including PlayerPrefs and browser local storage for WebGL builds.
 
@@ -16,7 +16,7 @@
 - Hit `(+)`, choose `Add package from Git URL`(Unity 2019.4+)
 - Paste the `URL` for this package inside the box: https://github.com/ebukaracer/EzSaverLite.git#upm
 - Hit `Add`
-- If you're using assembly definition in your project, be sure to add this package's reference under: `Assembly Definition References` or check out [this](https://github.com/ebukaracer/EzUnityUtils/blob/main/SETUPGUIDE.md)
+- If you're using assembly definition in your project, be sure to add this package's reference under: `Assembly Definition References` or check out [this](https://ebukaracer.github.io/ebukaracer/md/SETUPGUIDE.html)
 
 ## Quick Usage
 #### Saving Data:
