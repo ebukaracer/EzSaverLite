@@ -48,9 +48,11 @@ SaverManager.Saver.ClearAll();
 ```
 
 ## How it works
- **EzSaverLite** by default, uses `playerprefs` inside the unity editor during development and post-deployment to other platforms except for WebGL, which in this case relies on the browser's `local storage` for saving and loading data. When multiple builds of the same project(name) are made, data is also persisted along.
+ **EzSaverLite** by default, uses `playerprefs` inside the unity editor during development and post-deployment to other platforms except for WebGL, which in this case relies on the browser's `local storage` for saving and loading data. When multiple builds of the same project(name) are made, data also persists.
 
 ## Samples and Best Practices
+Before deploying your **WebGL** project, use the menu option: `Racer > EzSaverLite > Import WebGL Save Plugin` to import the `Lss(Local storage saver)` save plugin that will be used after deployment.
+
 Check out this package's sample scene by importing it from the package manager *sample's tab* and exploring the script for the recommended approach for saving and loading data easily.
 
 *To remove this package completely(leaving no trace), navigate to: `Racer > EzSaverLite > Remove package`*
