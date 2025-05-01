@@ -1,5 +1,4 @@
 #if UNITY_EDITOR
-using System;
 using System.IO;
 using UnityEditor;
 using UnityEditor.PackageManager;
@@ -8,18 +7,20 @@ using UnityEngine;
 
 namespace Racer.EzSaverLite.Editor
 {
-    internal class EzSaverLiteEditor : EditorWindow
+    internal static class EzSaverLiteEditor
     {
         private static RemoveRequest _removeRequest;
 
         private const string ContextMenuPath = "Racer/EzSaverLite/";
-        private const string FullContextMenuPath = ContextMenuPath + "Import WebGL Save Plugin";
+        private const string FullContextMenuPath = ContextMenuPath + "Import WebGL Save Plugin(Force)";
         private const string RootPath = "Assets/EzSaverLite";
+
         private const string PluginRootPath = RootPath + "/Plugins";
-        private const string PluginPath = PluginRootPath + "/Lss.jslib";
+        private const string PluginAssetsPath = PluginRootPath + "/Lss.jslib";
         private const string SamplesPath = "Assets/Samples/EzSaverLite";
+
         private const string PkgId = "com.racer.ezsaverlite";
-        private static readonly string PkgSourcePath = $"Packages/{PkgId}/Plugins";
+        private const string AssetPkgId = "EzSaverLite.unitypackage";
 
 
         [MenuItem(FullContextMenuPath, false)]
@@ -27,53 +28,37 @@ namespace Racer.EzSaverLite.Editor
         {
             if (EditorUserBuildSettings.activeBuildTarget != BuildTarget.WebGL)
             {
-                Debug.LogWarning("To import this plugin, current build target must be WebGL.");
+                Debug.LogError("To import this plugin, current build target must be WebGL.");
                 return;
             }
 
-            if (File.Exists(PluginPath))
-            {
-                Debug.Log($"Plugin already imported at: '{PluginRootPath}'");
-                SymbolDefiner.DefineSymbol();
-                return;
-            }
+            var packagePath = $"Packages/{PkgId}/Plugins/{AssetPkgId}";
 
-            if (!Directory.Exists(PkgSourcePath))
+            if (File.Exists(packagePath))
             {
-                Debug.LogError(
-                    "Source path is missing. Please ensure this package is installed correctly," +
-                    $" otherwise reinstall it.\nNonexistent Path: {PkgSourcePath}");
-                return;
+                AssetDatabase.ImportPackage(packagePath, true);
+                AssetDatabase.importPackageCompleted += DefineSymbol;
             }
-
-            try
-            {
-                DirUtil.CreateDirectory(RootPath);
-                Directory.Move(PkgSourcePath, PluginRootPath);
-                DirUtil.MoveMetaFile(PkgSourcePath, PluginRootPath);
-                AssetDatabase.Refresh();
-                Debug.Log($"Imported successfully at '{PluginRootPath}'");
-                SymbolDefiner.DefineSymbol();
-            }
-            catch (Exception e)
-            {
-                Debug.LogError(
-                    $"An error occurred while importing WebGL Save Plugin: {e.Message}\n{e.StackTrace}");
-            }
+            else
+                EditorUtility.DisplayDialog("Missing Package File", $"{AssetPkgId} not found in the package.", "OK");
         }
 
-        [MenuItem(FullContextMenuPath, true)]
-        private static bool ValidateImportPlugin()
-        {
-            return !SymbolDefiner.IsDefined || !File.Exists(PluginPath);
-        }
 
         [MenuItem(ContextMenuPath + "Remove Package(recommended)")]
         private static void RemovePackage()
         {
             _removeRequest = Client.Remove(PkgId);
-
             EditorApplication.update += RemoveRequest;
+        }
+
+        private static void DefineSymbol(string pkgName = null)
+        {
+            if (File.Exists(PluginAssetsPath))
+                SymbolDefiner.DefineSymbol();
+            else
+                Debug.LogError($"Failed to define symbol, plugin file not found at: {PluginAssetsPath}");
+
+            AssetDatabase.importPackageCompleted -= DefineSymbol;
         }
 
         private static void RemoveRequest()
@@ -110,20 +95,7 @@ namespace Racer.EzSaverLite.Editor
             DeleteEmptyMetaFiles(path);
         }
 
-        public static void CreateDirectory(string path)
-        {
-            if (!Directory.Exists(path))
-                Directory.CreateDirectory(path);
-        }
-
-        public static void MoveMetaFile(string source, string destination)
-        {
-            if (!File.Exists(source + ".meta")) return;
-
-            File.Move(source + ".meta", destination + ".meta");
-        }
-
-        public static void DeleteEmptyMetaFiles(string directory)
+        private static void DeleteEmptyMetaFiles(string directory)
         {
             if (Directory.Exists(directory)) return;
 

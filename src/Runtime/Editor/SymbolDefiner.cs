@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEditor;
+using UnityEditor.Build;
 using Debug = UnityEngine.Debug;
 
 namespace Racer.EzSaverLite.Editor
@@ -16,15 +17,15 @@ namespace Racer.EzSaverLite.Editor
         {
             if (IsDefined)
             {
-                Debug.Log($"[{CustomSymbol}] symbol already defined.");
+                Debug.Log($"[{CustomSymbol}] symbol already defined for EzSaverLite.");
                 return;
             }
 
             _definedSymbols = DefinedSymbols;
             _definedSymbols.Add(CustomSymbol);
 
-            PlayerSettings.SetScriptingDefineSymbolsForGroup(BuildTargetGroup.WebGL, _definedSymbols.ToArray());
-            Debug.Log($"[{CustomSymbol}] symbol is being defined..");
+            PlayerSettings.SetScriptingDefineSymbols(NamedBuildTarget.WebGL, _definedSymbols.ToArray());
+            Debug.Log($"[{CustomSymbol}] symbol is being defined for EzSaverLite..");
         }
 
         public static void UnDefineSymbol()
@@ -35,7 +36,7 @@ namespace Racer.EzSaverLite.Editor
             _definedSymbols = DefinedSymbols;
             _definedSymbols.Remove(CustomSymbol);
 
-            PlayerSettings.SetScriptingDefineSymbolsForGroup(BuildTargetGroup.WebGL, _definedSymbols.ToArray());
+            PlayerSettings.SetScriptingDefineSymbols(NamedBuildTarget.WebGL, _definedSymbols.ToArray());
         }
 
         private static List<string> DefinedSymbols
@@ -43,13 +44,13 @@ namespace Racer.EzSaverLite.Editor
             get
             {
                 var scriptingDefineSymbolsForGroup =
-                    PlayerSettings.GetScriptingDefineSymbolsForGroup(BuildTargetGroup.WebGL);
+                    PlayerSettings.GetScriptingDefineSymbols(NamedBuildTarget.WebGL);
 
                 return scriptingDefineSymbolsForGroup.Split(';').ToList();
             }
         }
 
-        public static bool IsDefined => DefinedSymbols.Contains(CustomSymbol);
+        private static bool IsDefined => DefinedSymbols.Contains(CustomSymbol);
     }
 }
 #endif

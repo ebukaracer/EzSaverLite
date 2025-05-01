@@ -3,7 +3,7 @@
 
 **EzSaverLite** is a Unity package that provides a flexible way to save and load game data. It supports multiple storage backends, including PlayerPrefs and browser local storage for WebGL builds.
 
-[Read Docs](https://ebukaracer.github.io/EzSaverLite)
+[View in DocFx](https://ebukaracer.github.io/EzSaverLite)
 ## Features
 - **Multiple Storage Backends**: Supports PlayerPrefs and browser's LocalStorage.
 - **Easy Integration**: Simple API for saving and loading data.
@@ -48,14 +48,14 @@ SaverManager.Saver.ClearAll();
 ```
 
 ## How it works
- **EzSaverLite** by default, uses `playerprefs` inside the unity editor during development and post-deployment to other platforms except for WebGL, which in this case relies on the browser's `local storage` for saving and loading data. When multiple builds of the same project(name) are made, data also persists.
+**EzSaverLite** uses `PlayerPrefs` by default in the Unity editor during development and for all platforms after deployment, except for WebGL. In the case of WebGL, it relies on the browser's `local storage` to save and load data. Additionally, when multiple builds of the same project (with the same name) are created, the data persists across those builds.
 
 ## Samples and Best Practices
-Before deploying your **WebGL** project, use the menu option: `Racer > EzSaverLite > Import WebGL Save Plugin` to import the `Lss(Local storage saver)` save plugin that will be used after deployment.
+Before deploying your WebGL project, navigate to the menu option: `Racer > EzSaverLite > Import WebGL Save Plugin(Force)` to import or update the Lss(Local Storage Saver) plugin, which will be used for saving and loading in the browser after deployment.
 
-Check out this package's sample scene by importing it from the package manager *sample's tab* and exploring the script for the recommended approach for saving and loading data easily.
+Optionally import this package's demo from the package manager's `Samples` tab.
 
-*To remove this package completely(leaving no trace), navigate to: `Racer > EzSaverLite > Remove package`*
+To remove this package completely(leaving no trace), navigate to: `Racer > EzSaverLite > Remove package`
 
 ## [Contributing](https://ebukaracer.github.io/ebukaracer/md/CONTRIBUTING.html)  
 Contributions are welcome! Please open an issue or submit a pull request.
