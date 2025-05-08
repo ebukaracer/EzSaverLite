@@ -1,7 +1,7 @@
 {
   "name": "com.racer.ezsaverlite",
   "displayName": "EzSaverLite",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "unity": "2020.3",
   "description": "A Flexible Saver for Unity Games, with Support for WebGL Persistent Saving.\n\nSaves data using browser's LocalStorage for WebGL and PlayerPrefs for other platforms.",
   "documentationUrl": "https://ebukaracer.github.io/EzSaverLite",
