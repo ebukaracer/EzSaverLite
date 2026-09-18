@@ -1,0 +1,22 @@
+{
+  "name": "com.racer.ezsaverlite",
+  "displayName": "EzSaverLite",
+  "version": "0.1.0",
+  "unity": "2019.4",
+  "description": "A flexible save solution for Unity games with browser-based persistence for WebGL.",
+  "documentationUrl": "https://ebukaracer.github.io/EzSaverLite",
+  "licensesUrl": "https://ebukaracer.github.io/ebukaracer/md/LICENSE.html",
+  "changelogUrl": "https://github.com/ebukaracer/EzSaverLite/tags",
+  "author": {
+    "name": "Racer",
+    "url": "https://github.com/ebukaracer"
+  },
+  "category": "Tool",
+  "samples": [
+    {
+      "displayName": "Demo",
+      "description": "Demo project for this package",
+      "path": "Samples~/Demo"
+    }
+  ]
+}

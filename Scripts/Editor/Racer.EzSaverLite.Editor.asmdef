@@ -1,0 +1,18 @@
+{
+  "name": "Racer.EzSaverLite.Editor",
+  "rootNamespace": "Racer",
+  "references": [
+    "GUID:b71f8efa8a7df964d8ded756eb3df5e7"
+  ],
+  "includePlatforms": [
+    "Editor"
+  ],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": false,
+  "precompiledReferences": [],
+  "autoReferenced": true,
+  "defineConstraints": [],
+  "versionDefines": [],
+  "noEngineReferences": false
+}
